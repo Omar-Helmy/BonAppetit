@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/brownPrimary</item>
+        <item name="colorPrimaryDark">@color/brownPrimary</item>
+        <item name="colorAccent">@color/brownAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+    </style>
+
+    <style name="AppTheme.Launch">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+</resources>

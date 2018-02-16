@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Blue Theme-->
+    <color name="bluePrimary">#3F51B5</color>
+    <color name="bluePrimaryDark">#303F9F</color>
+    <color name="blueAccent">#FF4081</color>
+
+    <!--Brown Theme-->
+    <color name="brownPrimary">#795548</color>
+    <color name="brownPrimaryDark">#3E2723</color>
+    <color name="brownAccent">#82B1FF</color>
+</resources>
