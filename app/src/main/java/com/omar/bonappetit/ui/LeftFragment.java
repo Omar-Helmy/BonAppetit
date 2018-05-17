@@ -1,9 +1,9 @@
 package com.omar.bonappetit.ui;
 
-import android.content.Context;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import com.omar.bonappetit.R;
 
 public class LeftFragment extends Fragment {
+
+
+	private View rootView;
 
 	public LeftFragment() {
 		// Required empty public constructor
@@ -22,10 +25,24 @@ public class LeftFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_left, container, false);
+		rootView = inflater.inflate(R.layout.fragment_left, container, false);
+
+		setupRecycleView();
+
+		return rootView;
 	}
 
 	private void setupRecycleView(){
+
+		RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycle_view_left);
+
+		/* setup recycle view with adapter */
+		RecyclerAdapter recyclerAdapter = new RecyclerAdapter();
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
+		linearLayoutManager.setSmoothScrollbarEnabled(true);
+		recyclerView.setLayoutManager(linearLayoutManager);
+		recyclerView.setAdapter(recyclerAdapter);
+
 
 	}
 	/////////////////////////////// Recycle Adapter /////////////////////////////////
@@ -79,6 +96,16 @@ public class LeftFragment extends Fragment {
 
 			private void setupData() {
 				//TODO: inflate view with right data
+			}
+
+			private void startActivityTransision() {
+				// Check if we're running on Android 5.0 or higher
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+					// Apply activity transition
+
+				} else {
+					// Swap without transition
+				}
 			}
 		}
 	}
