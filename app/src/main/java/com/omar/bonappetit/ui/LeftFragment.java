@@ -1,7 +1,9 @@
 package com.omar.bonappetit.ui;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -90,6 +92,7 @@ public class LeftFragment extends Fragment {
 					@Override
 					public void onClick(View v) {
 						//TODO: handle click event
+						startActivityTransition();
 					}
 				});
 			}
@@ -98,11 +101,12 @@ public class LeftFragment extends Fragment {
 				//TODO: inflate view with right data
 			}
 
-			private void startActivityTransision() {
+			private void startActivityTransition() {
 				// Check if we're running on Android 5.0 or higher
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 					// Apply activity transition
-
+					startActivity(new Intent(getContext(), SecondActivity.class),
+							ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle());
 				} else {
 					// Swap without transition
 				}
