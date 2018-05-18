@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.omar.bonappetit.R;
 
@@ -81,18 +82,20 @@ public class LeftFragment extends Fragment {
 		private class NormalViewHolder extends RecyclerView.ViewHolder {
 
 			//TODO: create final objects of views
+			final private ImageView cardImage;
 
 			private NormalViewHolder(View itemView) {
 				super(itemView);    // pass view to super class
 
 				//TODO: attach views
+				cardImage = (ImageView) itemView.findViewById(R.id.card_item_image);
 
 					/* on click listener on the whole view */
 				itemView.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						//TODO: handle click event
-						startActivityTransition();
+						startSecondActivity();
 					}
 				});
 			}
@@ -101,14 +104,26 @@ public class LeftFragment extends Fragment {
 				//TODO: inflate view with right data
 			}
 
-			private void startActivityTransition() {
+			private void startSecondActivity() {
+				Intent intent = new Intent(getContext(), SecondActivity.class);
 				// Check if we're running on Android 5.0 or higher
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-					// Apply activity transition
-					startActivity(new Intent(getContext(), SecondActivity.class),
-							ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity()).toBundle());
+					// Apply activity transition with shared element
+					ActivityOptionsCompat transition = ActivityOptionsCompat.makeSceneTransitionAnimation(
+							getActivity(), (View) cardImage,
+							getResources().getString(R.string.shared_image_transition));
+					// Apply activity transition with shared element
+//					ActivityOptionsCompat transition = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//							getActivity());
+
+					// Pass data object in the bundle and populate details activity.
+					/* to only use activity transition with no shared element:*/
+					//startActivity(intent);
+					/* to use shared element:*/
+					startActivity(intent, transition.toBundle());
 				} else {
 					// Swap without transition
+					startActivity(intent);
 				}
 			}
 		}

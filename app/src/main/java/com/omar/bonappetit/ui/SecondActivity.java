@@ -19,7 +19,7 @@ public class SecondActivity extends AppCompatActivity {
 		final Toolbar toolbar;
 
 		/* apply default app theme */
-		setTheme(R.style.AppTheme);
+		//setTheme(R.style.AppTheme); //no need, just defined in Manifest
 
 		/* view main app content */
 		setContentView(R.layout.activity_second);

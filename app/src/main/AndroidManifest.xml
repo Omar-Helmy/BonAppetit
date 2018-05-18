@@ -18,9 +18,20 @@
         </activity>
         <activity
             android:name=".ui.SecondActivity"
-            android:parentActivityName=".ui.SecondActivity">
+            android:parentActivityName=".ui.SecondActivity"
+            android:theme="@style/AppTheme">
 
         </activity>
+
+        <provider
+            android:name="storage.DataProvider"
+            android:authorities="com.omar.bonappetit"
+            android:enabled="true"
+            android:exported="false">
+
+        </provider>
+
+
     </application>
 
 </manifest>
